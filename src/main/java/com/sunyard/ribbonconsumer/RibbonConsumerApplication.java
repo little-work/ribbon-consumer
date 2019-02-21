@@ -1,7 +1,10 @@
 package com.sunyard.ribbonconsumer;
 
+import com.sunyard.ribbonconsumer.customRibbonStrategy.ExcludeFromComponentScan;
+import com.sunyard.ribbonconsumer.customRibbonStrategy.MyConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
@@ -11,6 +14,9 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
+//熔断器
+@EnableCircuitBreaker
+//服务的发现
 @EnableDiscoveryClient
 //实现自定义负载均衡的时候添加的通过这个注解可以为服务的负载均衡进行细粒度的控制，上面的意思是说要为eureka-client,
 //使用我们自定义的那个配置,而那个自定义的配置，定义了负载均衡是随机的，所以这个服务也就使用了随机负载均衡
@@ -33,6 +39,5 @@ public class RibbonConsumerApplication {
 
 	    SpringApplication.run(RibbonConsumerApplication.class, args);
 	}
-
 }
 

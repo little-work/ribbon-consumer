@@ -1,4 +1,4 @@
-package com.sunyard.ribbonconsumer;
+package com.sunyard.ribbonconsumer.customRibbonStrategy;
 
 
 import com.netflix.loadbalancer.IRule;

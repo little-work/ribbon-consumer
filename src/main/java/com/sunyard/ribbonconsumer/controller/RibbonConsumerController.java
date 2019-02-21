@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class ConsumerController {
+public class RibbonConsumerController {
 
 
     @Autowired
@@ -20,10 +20,10 @@ public class ConsumerController {
     private LoadBalancerClient loadBalancerClient;
 
 
-    //默认负载均衡
+
+    //默认负载均衡策略
     @RequestMapping(value = "ribbon-consumer",method = RequestMethod.GET)
     public String findServerDemo(){
-        System.out.println("负载均衡转发");
         return  restTemplate.getForEntity("http://eureka-client/hello",String.class).getBody();
     }
 
