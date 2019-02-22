@@ -43,7 +43,10 @@ public class HystrixByCodeService {
     public String codeHystrix3(){
         MyHystrixObservableCommand myHystrixObservableCommand =new MyHystrixObservableCommand(restTemplate);
         String str=null;
+        //hot observe
         Observable<String> observable= myHystrixObservableCommand.observe();
+        //cold observe
+        //Observable<String> observable2= myHystrixObservableCommand.toObservable();
         Iterator<String> iterator=observable.toBlocking().getIterator();
         while (iterator.hasNext()){
             str+=iterator.next();
